@@ -1,42 +1,16 @@
-
-// VARIABILI DI RICHIAMO HTML
-const myContainer = document.getElementById('container');
-
 posts.forEach(element => {
-
     // RICHIAMO LA FUNZIONE CREAZIONE HTML
     createHtmlFunc(element);
-    
-  
-
 });
 
 posts.forEach(element => {
-    let myBtn = document.querySelector(`.js-like-button${element.id}`);
-    let myLikes = document.getElementById(`like-counter-${element.id}`);
-
-    console.log(myLikes);
-    
-
-    myBtn.addEventListener('click', function () {
-        element.likes ++;
-        myLikes.innerHTML = element.likes;
-        console.log(element.likes);
-    });
+    // RICHIAMO LA FUNZIONE PER AGGIUNGERE LIKE
+    addLikeFunc (element)
 });
-
-
-
-
-
-
-
-
-
 
 // FUNZIONE CREAZIONE L'HTML
 function createHtmlFunc (obj) {
-
+    const myContainer = document.getElementById('container');
 
     myContainer.innerHTML +=
     `<div class="post">
@@ -69,4 +43,18 @@ function createHtmlFunc (obj) {
         </div> 
     </div>            
     </div>`;
+};
+
+// FUNZIONE PER AGGIUNGERE LIKE
+function addLikeFunc (obj) {
+    let myBtn = document.querySelector(`.js-like-button${obj.id}`);
+    myBtn.removeAttribute('href');
+    let myLikes = document.getElementById(`like-counter-${obj.id}`);
+    
+    myBtn.addEventListener('click', function () {
+        obj.likes ++;
+        myLikes.innerHTML = obj.likes;
+        
+        myBtn.classList.add('like-button--liked');
+    });
 };
