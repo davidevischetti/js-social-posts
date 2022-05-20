@@ -7,12 +7,17 @@ posts.forEach(element => {
     // RICHIAMO LA FUNZIONE CREAZIONE HTML
     createHtmlFunc(element);
     
+  
+
+});
+
+posts.forEach(element => {
     let myBtn = document.querySelector(`.js-like-button${element.id}`);
     let myLikes = document.getElementById(`like-counter-${element.id}`);
 
-    console.log(element.likes);
+    console.log(myLikes);
     
-    
+
     myBtn.addEventListener('click', function () {
         element.likes ++;
         myLikes.innerHTML = element.likes;
